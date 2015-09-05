@@ -1,5 +1,5 @@
 Myapp::Application.routes.draw do
-  mount Uploadbox::Engine => '/uploadbox', as: :uploadbox
+  
   devise_for :users
   
   resources :users

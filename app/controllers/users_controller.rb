@@ -41,15 +41,18 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if user_params[:password].blank? 
+        @user.update_without_password(user_params_without_password)
         format.html { redirect_to @user, notice: 'User was successfully updated.'  }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.'  }
+        format.json { head :no_content }
       end
     end
   end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -69,6 +72,12 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+       params.require(:user).permit(:name, :email, :password, :password_confirmation, :image ,:birth , :genre)
+    end
+
+    def user_params_without_password
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+      user_params
     end
 end

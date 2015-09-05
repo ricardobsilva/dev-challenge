@@ -5,7 +5,7 @@
                 <div class="dropdown profile-element">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Batmananimated32.png" alt="..." class="img-circle" height="130" width="130">
+                            <img src="<%= current_user.image%>" class="img-circle" height="130" width="130">
                             <span class="block m-t-xs">
                                 <strong class="font-bold"><%= current_user.email%></strong>
                             </span> <span class="text-muted text-xs block"> configurações <b class="caret"></b></span>
@@ -28,6 +28,11 @@
             <li class="<%= 'active' if current_page?('/') %>">
                 <%= link_to "/" do %>
                     <i class="fa fa-users"></i> <span class="nav-label">amigos</span>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?('/') %>">
+                <%= link_to "/" do %>
+                    <i class="fa fa-plus-circle"></i> <span class="nav-label">solicitações de amizade</span>
                 <% end %>
             </li>
             <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>">

@@ -31,8 +31,8 @@ gem 'jbuilder', '~> 1.2'
 #devise
 gem 'devise'
 
-#upload de imagem
-gem 'uploadbox', '0.2.0'
+gem 'carrierwave'
+
 
 gem 'slim'
 
