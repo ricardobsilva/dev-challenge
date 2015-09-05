@@ -15,7 +15,7 @@
 </head>
 <body>
 <% if user_signed_in? %>
-    <!-- Wrapper-->
+     <!-- Wrapper-->
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -26,20 +26,22 @@
 
             <!-- Page wrapper -->
             <%= render 'layouts/topnavbar' %>
-
+<% end %>
             <!-- Main view  -->
-        
+            <%= yield %>
+
+            <!-- Footer -->
+            <%= render 'layouts/footer' %>
+
         </div>
         <!-- End page wrapper-->
 
     </div>
     <!-- End wrapper-->
-<% end %>
+    <!-- End wrapper-->
 
-<%= yield %>
 
- <!-- Footer -->
-<%= render 'layouts/footer' %>  
+  
 
 </body>
 </html>

@@ -1,9 +1,12 @@
 Myapp::Application.routes.draw do
+  mount Uploadbox::Engine => '/uploadbox', as: :uploadbox
   devise_for :users
   
   resources :users
   get "home/index"
   get "home/minor"
+  get "users/index"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

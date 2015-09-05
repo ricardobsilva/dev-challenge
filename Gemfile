@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+gem 'jquery-rails', '~> 4.0.3'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -28,6 +30,11 @@ gem 'jbuilder', '~> 1.2'
 
 #devise
 gem 'devise'
+
+#upload de imagem
+gem 'uploadbox', '0.2.0'
+
+gem 'slim'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

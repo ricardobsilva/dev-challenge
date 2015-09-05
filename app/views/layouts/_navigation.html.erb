@@ -7,26 +7,32 @@
                         <span class="clear">
                             <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Batmananimated32.png" alt="..." class="img-circle" height="130" width="130">
                             <span class="block m-t-xs">
-                                <strong class="font-bold">Example user!</strong>
-                            </span> <span class="text-muted text-xs block">Example menu <b class="caret"></b></span>
+                                <strong class="font-bold"><%= current_user.email%></strong>
+                            </span> <span class="text-muted text-xs block"> configurações <b class="caret"></b></span>
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="#">Logout</a></li>
+                        <li><%= link_to 'editar perfil' %></li>
+                        <li><%= link_to 'sair' , destroy_user_session_path, method: :delete %></li>
                     </ul>
                 </div>
                 <div class="logo-element">
                     SF+
                 </div>
             </li>
-            <li class="<%= 'active' if current_page?('/') %>">
-                <%= link_to "/" do %>
-                <i class="fa fa-laptop"></i> <span class="nav-label">Main page</span>
-                <% end %>
-            </li>
             <li class="<%= 'active' if current_page?('/home/minor') %>">
                 <%= link_to "/home/minor" do %>
-                <i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span>
+                <i class="fa fa-envelope"></i> <span class="nav-label">mensagens</span>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?('/') %>">
+                <%= link_to "/" do %>
+                    <i class="fa fa-users"></i> <span class="nav-label">amigos</span>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>">
+                <%= link_to (edit_user_path(current_user)) do%>
+                <i class="fa fa-user"></i> <span class="nav-label">perfil</span>
                 <% end %>
             </li>
         </ul>
