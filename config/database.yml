@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: postgres
+  password: postgres
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: test-dev-rails
+  username: postgres
+  password: postgres
+  host: localhost
