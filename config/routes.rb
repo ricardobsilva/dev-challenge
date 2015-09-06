@@ -3,6 +3,7 @@ Myapp::Application.routes.draw do
   devise_for :users
   
   resources :users
+  resources :messages
   get "home/index"
   get "home/minor"
   get "users/index"

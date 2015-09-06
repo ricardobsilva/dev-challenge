@@ -20,14 +20,19 @@
                     SF+
                 </div>
             </li>
-            <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/home/minor" do %>
+            <li class="<%= 'active' if current_page?('/messages') %>">
+                <%= link_to messages_path do %>
                 <i class="fa fa-envelope"></i> <span class="nav-label">mensagens</span>
                 <% end %>
             </li>
             <li class="<%= 'active' if current_page?('/') %>">
                 <%= link_to "/" do %>
                     <i class="fa fa-users"></i> <span class="nav-label">amigos</span>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if current_page?('/') %>">
+                <%= link_to "/" do %>
+                    <i class="fa fa-globe"></i> <span class="nav-label">todos os usuários</span>
                 <% end %>
             </li>
             <li class="<%= 'active' if current_page?('/') %>">
