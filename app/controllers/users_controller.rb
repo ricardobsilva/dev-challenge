@@ -3,8 +3,27 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   # GET /users
   # GET /users.json
+  def friend
+    @friends = Friendship.paginate(:page => params[:page], :per_page => 5).where(user_id: current_user).where(aproved: 'yes')
+    #@friends_g = Friendship.paginate(:page => params[:page], :per_page => 5).where(user_id: current_user)
+   # @friends = @friends_g.select("DISTINCT(friend_id)")
+  end
+
   def index
-    @users = Friendship.where(user_id: current_user)
+    #@users = Friendship.where(user_id: current_user)
+    @users = User.paginate(:page => params[:page], :per_page => 5)
+  end
+
+  def cfriend
+    # cria a amizade bilateral
+    Friendship.create(user_id: current_user.id , friend_id: params[:id] , aproved: 'yes')
+    
+    #pega o ultimo registro de amizade
+    @last_friend = Friendship.last
+
+    #seta para MAYBE para que o outro usuario possa aceitar ou nao
+    @last_friend.update(aproved: 'maybe')
+    redirect_to friends_path
   end
 
   # GET /users/1

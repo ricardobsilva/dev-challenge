@@ -2,9 +2,18 @@ Myapp::Application.routes.draw do
   
   devise_for :users
   
-  resources :users
+  resources :users do
+    member do
+      get :cfriend
+    end
+  end
+  #match '/users/:id' => 'users#cfriend', via: 'get'
+  #match 'users/:id', controller: 'users', action: 'cfriend', via: 'get'
+
   resources :messages
   resources :friendships
+  match 'friends' => 'users#friend', via: 'get'
+
   get "home/index"
   get "home/minor"
   get "users/index"

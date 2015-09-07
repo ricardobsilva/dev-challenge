@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>seus amigos</h1>
+<h1>usuários da rede</h1>
 <div class="col-sm-11 col-sm-offset-1">
   <table class="table table-striped">
     <thead>
@@ -15,13 +15,13 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= image_tag(user.friend.try(:image), size: "66")%></td>
-          <td><%= user.friend.try(:email) %></td>
+          <td><%= image_tag(user.try(:image), size: "66")%></td>
+          <td><%= user.try(:email) %></td>
           <td>
             <div class=" btn btn-group btn-right">
                 <%= link_to 'ver perfil', user , class: 'btn btn-primary btn-sm' %>
-                <%= link_to 'adicionar', edit_user_path(user) , class: 'btn btn-primary btn-sm' %>
-                <%= link_to 'desfazer amizade', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'adicionar', cfriend_user_path(user) , class: 'btn btn-primary btn-sm' %>
+                <%#= link_to 'desfazer amizade', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-primary btn-sm' %>
             </div>
           </td>
         </tr>
@@ -30,5 +30,5 @@
   </table>
 </div>
 <br>
-
+<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
 <%#= link_to 'New User', new_user_path %>
