@@ -4,6 +4,7 @@ Myapp::Application.routes.draw do
   
   resources :users
   resources :messages
+  resources :friendships
   get "home/index"
   get "home/minor"
   get "users/index"

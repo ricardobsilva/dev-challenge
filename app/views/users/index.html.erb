@@ -1,25 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<h1>seus amigos</h1>
+<div class="col-sm-11 col-sm-offset-1">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
+        <th>email</th>
+        <th>ações</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag(user.friend.try(:image), size: "66")%></td>
+          <td><%= user.friend.try(:email) %></td>
+          <td>
+            <div class=" btn btn-group btn-right">
+                <%= link_to 'ver perfil', user , class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'adicionar', edit_user_path(user) , class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'desfazer amizade', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-primary btn-sm' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%#= link_to 'New User', new_user_path %>
