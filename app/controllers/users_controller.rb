@@ -14,17 +14,44 @@ class UsersController < ApplicationController
     @users = User.paginate(:page => params[:page], :per_page => 5)
   end
 
+  #criar amizade
   def cfriend
     # cria a amizade bilateral
     Friendship.create(user_id: current_user.id , friend_id: params[:id] , aproved: 'yes')
-    
     #pega o ultimo registro de amizade
     @last_friend = Friendship.last
-
     #seta para MAYBE para que o outro usuario possa aceitar ou nao
     @last_friend.update(aproved: 'maybe')
     redirect_to friends_path
   end
+
+  #solicitações pendentes
+  def pending_invitation
+    @friends = Friendship.paginate(:page => params[:page], :per_page => 5).where(user_id: current_user).where(aproved: 'maybe')
+  end
+
+  #aceitar solicitação
+  def aprove_invitation
+    @aprovation = Friendship.find(params[:id])
+    @aprovation.update(aproved: 'yes')
+    redirect_to friends_path
+  end
+
+  #recusar  solicitação
+  def recuse_invitation
+    
+    #recusa solicitão
+    @recuse_aprovation = Friendship.find(params[:id])
+    @recuse_aprovation.update(aproved: 'no')
+
+    #exclui o perfil que recusou da lista de amigos do perfil que solicitou
+    #@user_aprovation = Friendship.find(params[:id])
+    #@last_aprovation = Friendship.last(2).first
+    #@last_aprovation.update(aproved: 'no')
+
+    redirect_to invitations_path 
+  end
+
 
   # GET /users/1
   # GET /users/1.json

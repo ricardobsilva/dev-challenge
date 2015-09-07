@@ -5,6 +5,8 @@ Myapp::Application.routes.draw do
   resources :users do
     member do
       get :cfriend
+      get :aprove_invitation
+      get :recuse_invitation
     end
   end
   #match '/users/:id' => 'users#cfriend', via: 'get'
@@ -13,6 +15,7 @@ Myapp::Application.routes.draw do
   resources :messages
   resources :friendships
   match 'friends' => 'users#friend', via: 'get'
+  match 'invitations' => 'users#pending_invitation', via: 'get'
 
   get "home/index"
   get "home/minor"

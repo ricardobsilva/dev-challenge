@@ -35,8 +35,8 @@
                     <i class="fa fa-globe"></i> <span class="nav-label">todos os usuários</span>
                 <% end %>
             </li>
-            <li class="<%= '' if current_page?('/') %>">
-                <%= link_to "/" do %>
+            <li class="<%= 'active' if current_page?('/invitations') %>">
+                <%= link_to invitations_path do %>
                     <i class="fa fa-plus-circle"></i> <span class="nav-label">solicitações de amizade</span>
                 <% end %>
             </li>

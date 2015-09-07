@@ -1,4 +1,23 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>		
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="col-sm-12" style="background-color:;">
+	<div class="col-sm-3">
+		<%= image_tag(@user.image, size: "200") %>
+
+	</div>
+	<div class="col-sm-3">
+		<h1><%= @user.email %></h1>
+		<%= @user.genre %></br>
+		Nascido em: <%= @user.birth %></br>
+	</div>		
+</div>
+
+
+
+<%#= image_tag(@user.image, size: "200") %>
+<%#= @user.email %>
+<%#= @user.genre %>
+<%#= @user.birth %>
+
+<%#= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary btn-sm' %> 
+<%#= link_to 'Back', users_path %>
