@@ -7,6 +7,7 @@ Myapp::Application.routes.draw do
       get :cfriend
       get :aprove_invitation
       get :recuse_invitation
+      post :message
     end
   end
   #match '/users/:id' => 'users#cfriend', via: 'get'

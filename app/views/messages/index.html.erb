@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Messages</h1>
+<h1>Mensagens recebidas</h1>
 
-<table>
+<%= link_to 'escrever mensagem para um amigo', new_message_path, class: 'btn btn-primary col-sm-offset-8' %>
+<table class="table table-striped">
   <thead>
+    <th>
+      amigo
+    </th>
+    <th>
+      mensagem
+    </th>
     <tr>
       <th colspan="3"></th>
     </tr>
@@ -12,9 +19,14 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= message.user.email %></td>
+        <td><%= message.message %></td>
+        <td>
+          <div class='btn-group pull-right'>
+            <%#= link_to 'Edit', edit_message_path(message) %>
+            <%= link_to 'excluir mensagem', message, method: :delete, data: { confirm: 'tem certeza?' },class: 'btn btn-primary' %>
+          </div>  
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +34,3 @@
 
 <br>
 
-<%= link_to 'New Message', new_message_path %>

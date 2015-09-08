@@ -10,8 +10,17 @@
       </ul>
     </div>
   <% end %>
+  <%#= f.text_area :message, class: 'form-control'  %>
+  <%= f.label 'de' %>
+  <%= f.collection_select(:user_id,@users,:id,:email, class: 'form-control')%> </br></br>
 
+  <%= f.label 'para' %>
+  <%= f.collection_select(:friend_id,@friends,:friend_id,:name_friend,{ :prompt => 'selecione o amigo' },{class: 'form-control'})%>
+
+  <%= f.label 'escreva aqui sua mensagem' %>
+  <%= f.text_area :message, class: 'form-control'  %>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "enviar" , class: 'btn btn-primary'%>
   </div>
 <% end %>

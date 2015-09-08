@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          mount_uploader :image, AvatarUploader
 
   has_many :messages       
-
+  has_many :friends , through: :messages, source: :firend
 
   has_many :friendships
   has_many :friends , through: :friendships, source: :friend

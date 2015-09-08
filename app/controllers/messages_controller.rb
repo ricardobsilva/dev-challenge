@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @messages = Message.paginate(:page => params[:page], :per_page => 5).where(friend_id: current_user)
   end
 
   # GET /messages/1
@@ -15,6 +15,8 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    @friends = Friendship.all.where(user_id: current_user).where(aproved: 'yes')
+    @users = User.all.where(id: current_user)
   end
 
   # GET /messages/1/edit
@@ -28,7 +30,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to messages_path, notice: 'Mensagem enviada!.' }
         format.json { render action: 'show', status: :created, location: @message }
       else
         format.html { render action: 'new' }
@@ -69,6 +71,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params[:message]
+      params.require(:message).permit(:message,:user_id,:friend_id)
     end
 end

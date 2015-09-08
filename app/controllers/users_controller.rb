@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   #criar amizade
   def cfriend
     # cria a amizade bilateral
-    Friendship.create(user_id: current_user.id , friend_id: params[:id] , aproved: 'yes')
+    @user = User.find(params[:id])
+    Friendship.create(user_id: current_user.id , friend_id: params[:id] , aproved: 'yes', name_friend: @user.email)
     #pega o ultimo registro de amizade
     @last_friend = Friendship.last
     #seta para MAYBE para que o outro usuario possa aceitar ou nao
