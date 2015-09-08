@@ -18,11 +18,18 @@ class UsersController < ApplicationController
   def cfriend
     # cria a amizade bilateral
     @user = User.find(params[:id])
-    Friendship.create(user_id: current_user.id , friend_id: params[:id] , aproved: 'yes', name_friend: @user.email)
+    Friendship.create(user_id: current_user.id , friend_id: params[:id] , aproved: 'yes', name_friend: @user.name)
     #pega o ultimo registro de amizade
     @last_friend = Friendship.last
     #seta para MAYBE para que o outro usuario possa aceitar ou nao
     @last_friend.update(aproved: 'maybe')
+    redirect_to friends_path
+  end
+
+  #desfazer amizade
+  def dfriend
+    @friendship = Friendship.find(params[:id])
+    @friendship.update(aproved: 'no')
     redirect_to friends_path
   end
 
@@ -90,7 +97,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if user_params[:password].blank? 
         @user.update_without_password(user_params_without_password)
-        format.html { redirect_to @user, notice: 'User was successfully updated.'  }
+        format.html { redirect_to @user, notice: 'Perfil atualizado com sucesso'  }
         format.json { head :no_content }
       else
         @user.update(user_params)

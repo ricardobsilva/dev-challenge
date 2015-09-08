@@ -19,7 +19,7 @@
           <td><%= user.friend.try(:email) %></td>
           <td>
             <div class=" btn btn-group btn-right">
-                <%= link_to 'ver perfil', user , class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'ver perfil', user_path(user.friend.id) , class: 'btn btn-primary btn-sm' %>
                 <%= link_to 'aceitar', aprove_invitation_user_path(user) , class: 'btn btn-primary btn-sm' %>
                 <%= link_to 'recusar', recuse_invitation_user_path(user) , class: 'btn btn-primary btn-sm' %>
                 <%#= link_to 'desfazer amizade', user, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-primary btn-sm' %>

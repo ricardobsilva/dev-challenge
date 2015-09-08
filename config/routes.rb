@@ -5,6 +5,7 @@ Myapp::Application.routes.draw do
   resources :users do
     member do
       get :cfriend
+      get :dfriend
       get :aprove_invitation
       get :recuse_invitation
       post :message
