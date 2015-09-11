@@ -1,3 +1,4 @@
+
 # Test Dev Rails
 
 Criar uma rede social (basica), com:
@@ -19,3 +20,13 @@ O candidato terá até terça dia 8 de setembro ás 23:59h para entregar a solu�
 
 
 ###### Boa sorte !!!
+
+___ #   ______   #  ___________ #
+
+# dev-challenge
+challenge posed to assess knowledge on rails
+
+
+ruby version : 2.2.0
+rails version: 4.2.0
+
